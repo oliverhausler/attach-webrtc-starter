@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*https://stackoverflow.com/a/14205976*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ff6e00 inset !important;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  font-size: 18px;
+  font-weight: 400;
+  background: #ff6e00;
+  color: white;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.hidden {
+  max-width: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.container {
+  margin: 40px auto;
+  min-height: 90vh;
+  max-width: 1200px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.disclaimer {
+  text-align: left;
+  line-height: 40px;
+  min-height: 40px;
+  display: block;
+  padding: 0 5px;
+}
+.disclaimer a:hover {
+  text-decoration: underline;
+}
+
+.tooltip.hidden {
+  opacity: 0;
+}
+.tooltip {
+  transition: opacity 0.5s linear;
+  position: absolute;
+  left: -8px;
+  color: white;
+}
+
+button {
+  position: relative;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.title {
+  color: white;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
+.page__title {
+  max-width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.customize {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.input {
+  outline: none;
+  color: inherit;
+  font-size: 18px;
+  line-height: 22px;
+  background: transparent;
+  border: 1px solid white;
+  padding: 4px 6px;
+  width: 80%;
+  margin-right: 5px;
+}
+
+.step__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+  max-width: 300px;
+}
+
+.step__number {
+  font-size: 65px;
+  padding-right: 30px;
+}
+
+.step--one .form {
+  align-items: center;
+}
+
+.hashtag {
+  font-size: 22px;
+  padding-right: 5px;
+}
+
+.step--one .title,
+.step--three .title {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.step--two .wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.step--two .upload {
+  margin-left: 10px;
+  font-size: 0.95rem;
+  height: 70px;
+  width: 70px;
+  min-height: 70px;
+  min-width: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  border: 1px solid white;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+  background-size: cover;
+}
+
+.upload.uploading {
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  background-image: url("icons/refresh.svg");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: wait;
+}
+
+.form {
+  display: flex;
+}
+
+.submit {
+  cursor: pointer;
+  border: 1.5px solid white;
+  font-size: 0.7em;
+  color: white;
+  font-weight: bold;
+  padding: 4px;
+}
+.submit.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.error.show {
+  margin-top: 8px;
+  padding: 3px;
+}
+
+.step--three .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.step--two .action__wrapper {
+  flex-direction: column;
+}
+
+.action__wrapper button {
+  margin-right: 20px;
+}
+
+.action__wrapper {
+  display: flex;
+}
+
+.icon--copy {
+  font-size: 34px;
+  color: white;
+}
+
+.action__wrapper button:last-child {
+  margin-right: 0px;
+}
+
+.videocall {
+  width: 100%;
+  height: 400px;
+}
+
+@media (min-width: 380px) {
+  .step {
+    min-width: 300px;
+  }
+}
+
+@media (min-width: 769px) {
+  .disclaimer {
+    text-align: right;
+  }
+  .step {
+    margin: 25px 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .customize {
+    padding: 0;
+  }
+  .step__list {
+    justify-content: space-between;
+  }
+  .step {
+    flex-direction: column;
+  }
+  .action__wrapper {
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+  }
+  .step--two .upload {
+    margin-left: 0;
+  }
+  .wrapper {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .step__number {
+    font-size: 65px;
+    font-weight: 400;
+    padding-right: 0;
+  }
+}

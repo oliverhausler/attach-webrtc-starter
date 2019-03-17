@@ -1,0 +1,114 @@
+<!-- Discover the ATTACH WebRTC platform. Fork and enjoy. https://www.attach.live -->
+<!-- Setting up a WebRTC video call -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WebRTC Starter – ATTACH</title>
+    <link
+      rel="icon"
+      href="https://dev-assets.attach.live/icon2/webrtc-starter/favicon.ico"
+      sizes="32x32"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="uploadFile.js" defer></script>
+
+    <!-- Set up ATTACH for your website: https://documentation.attach.live/properties -->
+    <script src="https://dev-video.attach.live/v1" defer></script>
+    <!-- Define static SDK properties in meta -->
+    <meta
+      property="attach:api-key"
+      content="dev_web_ixanujIFpkdsWwqD3rTBSXU1RpCCiAww"
+    />
+    <meta property="attach:videocall:identity-color" content="#04670A" />
+    <!-- Start code for dynamically modifying SDK properties last -->
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <a
+      href="https://github.com/attach-live/attach-webrtc-starter"
+      class="ribbon"
+      ><img
+        width="149"
+        height="149"
+        src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149"
+        class="attachment-full size-full"
+        alt="Fork me on GitHub"
+        data-recalc-dims="1"
+    /></a>
+    <div class="container">
+      <div class="page__title title">
+        People with the same hashtag will meet in the same room.
+      </div>
+      <section class="customize">
+        <ul class="step__list">
+          <li class="step step--one">
+            <div class="step__number">1</div>
+            <div class="wrapper">
+              <label class="title">Enter a hashtag</label>
+              <form class="action__wrapper form" id="form">
+                <p class="hashtag">#</p>
+                <input type="text" class="input" id="hashtag" maxlength="100" />
+                <button id="submit" class="submit disabled" type="submit">
+                  OK
+                </button>
+              </form>
+            </div>
+          </li>
+          <li class="step step--two">
+            <div class="step__number">2</div>
+            <div class="wrapper">
+              <input type="file" id="input-file" class="hidden" />
+              <label class="title">Drop your avatar</label>
+              <div class="action__wrapper">
+                <div class="upload" id="upload-file">upload</div>
+                <div class="error" id="error-upload"></div>
+              </div>
+            </div>
+          </li>
+          <li class="step step--three">
+            <div class="step__number">3</div>
+            <div class="wrapper">
+              <label class="title">Share or try</label>
+              <div class="action__wrapper">
+                <button id="copy">
+                  <i class="material-icons icon--copy">
+                    content_copy
+                  </i>
+                  <div id="tooltip" class="tooltip hidden">Copied</div>
+                </button>
+                <button id="email">
+                  <img class="icon" src="icons/email.svg" />
+                </button>
+                <button id="open-browser">
+                  <img class="icon" src="icons/open-in-new.svg" />
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Place the ATTACH embed on your website -->
+      <main class="videocall attach-videocall"></main>
+    </div>
+    <p class="disclaimer">
+      Made with love by
+      <a target="_blank" href="https://www.attach.live">ATTACH</a>
+    </p>
+  </body>
+</html>
