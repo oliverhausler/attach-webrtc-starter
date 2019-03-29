@@ -1,5 +1,5 @@
 var hashtag = "helloattach";
-var picture = "";
+var avatar = "";
 
 var inputHashtag = document.querySelector("#hashtag");
 var submitButton = document.querySelector("#submit");
@@ -102,8 +102,8 @@ function updateAttach({ identifier, imageUrl }) {
     window.location.hash = "#" + identifier;
   }
   if (imageUrl) {
-    picture = imageUrl;
-    attachSdk.setProperty("attach:user:picture", imageUrl);
+    avatar = imageUrl;
+    attachSdk.setProperty("attach:user:avatar", imageUrl);
   }
 }
 
