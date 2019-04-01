@@ -54,7 +54,7 @@ body {
 }
 
 .container {
-  margin: 40px auto;
+  margin: 20px auto;
   min-height: 90vh;
   max-width: 1200px;
 }
@@ -245,6 +245,8 @@ button {
 .videocall {
   width: 100%;
   height: 400px;
+  /* remove this later!!! */
+  background-color: rgba(0, 0, 0, .92);
 }
 
 @media (min-width: 380px) {
@@ -290,5 +292,35 @@ button {
     font-size: 65px;
     font-weight: 400;
     padding-right: 0;
+  }
+}
+
+@media (min-width: 1200px) and (max-height: 850px) {
+  .container {
+    margin: 0 auto;
+  }
+
+  .step {
+    flex-direction: row;
+  } 
+}
+
+@media (min-width: 1200px) and (max-height: 790px) {
+  .step {
+    margin: 15px 30px;
+  }
+
+  .step .wrapper {
+    min-height: 110px;
+  }
+
+  .step .action__wrapper {
+    height: 110px;
+  }
+}
+
+@media (min-width: 1200px) and (max-height: 690px) {
+  .videocall {
+    height: 360px;
   }
 }
