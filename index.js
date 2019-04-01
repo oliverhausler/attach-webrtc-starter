@@ -30,7 +30,7 @@ var emailButton = document.querySelector("#email");
 var openBrowserButton = document.querySelector("#open-browser");
 
 function getUrl() {
-  return window.location.origin + "/#" + hashtag;
+  return window.location.origin + window.location.pathname + "#" + hashtag;
 }
 
 function cleanHashtag(value) {
@@ -58,7 +58,11 @@ function initListeners() {
   });
 
   emailButton.addEventListener("click", function() {
-    window.location.href = "mailto:subject=helloattach&body=" + getUrl();
+    window.location.href =
+      "mailto:subject=Join me for WebRTC video on #" +
+      hashtag +
+      "&body=" +
+      getUrl();
   });
 
   openBrowserButton.addEventListener("click", function() {

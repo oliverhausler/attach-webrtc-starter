@@ -220,6 +220,7 @@ button {
 .step--three .wrapper {
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
 }
 
 .step--two .action__wrapper {
@@ -232,6 +233,11 @@ button {
 
 .action__wrapper {
   display: flex;
+}
+
+.email {
+  font-size: 40px;
+  color: white;
 }
 
 .icon--copy {
@@ -339,9 +345,9 @@ button {
 
 @media (max-width: 480px) {
   .step:first-child {
-    margin-top: 0;
+    margin-top: 15px;
   }
-  
+
   .step:not(:last-child) {
     margin-bottom: 0;
   }
