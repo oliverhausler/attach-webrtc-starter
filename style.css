@@ -45,6 +45,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 999;
 }
 
 .hidden {
@@ -322,5 +323,26 @@ button {
 @media (min-width: 1200px) and (max-height: 690px) {
   .videocall {
     height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ribbon img {
+    height: 130px;
+    width: 130px;
+  }
+
+  .step__list {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 480px) {
+  .step:first-child {
+    margin-top: 0;
+  }
+  
+  .step:not(:last-child) {
+    margin-bottom: 0;
   }
 }
