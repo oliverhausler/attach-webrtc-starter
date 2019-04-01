@@ -1,5 +1,5 @@
-var hashtag = "helloattach";
-var avatar = "";
+var hashtag = window.localStorage.getItem("identifier") || "helloattach";
+var avatar = window.localStorage.getItem("avatar") || "";
 
 var inputHashtag = document.querySelector("#hashtag");
 var submitButton = document.querySelector("#submit");
@@ -23,6 +23,7 @@ document.querySelector("#form").addEventListener("submit", function(e) {
 
   inputHashtag.value = inputValue;
   updateAttach({ identifier: inputValue });
+  window.localStorage.setItem("identifier", inputValue);
 });
 
 var copyButton = document.querySelector("#copy");
@@ -125,5 +126,11 @@ attachSdk.setProperty("attach:room", {
   type: "hashtag",
   identifier: hashtag
 });
+
+if (avatar) {
+  attachSdk.setProperty("attach:user:avatar", avatar);
+  document.querySelector("#upload-file").style.backgroundImage =
+    "url('" + avatar + "')";
+}
 
 initListeners();

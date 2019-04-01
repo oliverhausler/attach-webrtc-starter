@@ -24,6 +24,7 @@ var UploadFile = function(options) {
     uploadFileButton.style.backgroundImage = imageUrl
       ? "url('" + imageUrl + "')"
       : "";
+    window.localStorage.setItem("avatar", imageUrl);
   }
 
   function upload(file) {
