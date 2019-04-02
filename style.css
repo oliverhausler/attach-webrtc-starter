@@ -184,15 +184,29 @@ button {
   background-size: cover;
 }
 
+.step--two .upload .refresh {
+  display: none;
+}
+
 .upload.uploading {
   -webkit-animation: spin 2s linear infinite;
   -moz-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
-  background-image: url("icons/refresh.svg");
   background-size: 40px 40px;
   background-repeat: no-repeat;
   background-position: center;
   cursor: wait;
+  position: relative;
+}
+
+.upload.uploading > .refresh {
+  display: block;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
 }
 
 .form {
