@@ -1,38 +1,33 @@
-function updateClass(element, className, shouldAdd) {
-  if (shouldAdd) {
-    element.classList.add(className);
-  } else {
-    element.classList.remove(className);
-  }
-}
-
 var UploadFile = function(options) {
-  var imageUrl;
-  var uploading = false;
-  var error;
   var errorElement = document.querySelector("#error-upload");
   var inputFile = document.querySelector("#input-file");
   var uploadFileButton = document.querySelector("#upload-file");
+  var uploadSpan = uploadFileButton.querySelector("span");
+  var isUploading = false;
 
-  function render() {
+  uploadSpan.innerText = options.initialValue ? "" : "upload";
+  setBackground(uploadFileButton, options.initialValue);
+
+  function render(imageUrl, uploading, error) {
+    isUploading = uploading;
+
     updateClass(errorElement, "show", error);
-    errorElement.innerText = error;
-
     updateClass(uploadFileButton, "uploading", uploading);
 
-    uploadFileButton.innerText = imageUrl || uploading ? "" : "upload";
-    uploadFileButton.style.backgroundImage = imageUrl
-      ? "url('" + imageUrl + "')"
-      : "";
+    errorElement.innerText = error;
+
+    uploadSpan.innerText = imageUrl || uploading ? "" : "upload";
+    setBackground(uploadFileButton, imageUrl);
   }
 
   function upload(file) {
-    if (uploading || !file) return;
-    error = "";
-    uploading = true;
-    render();
+    if (isUploading || !file) return;
+
+    render(null, true, null);
+
     var formData = new FormData();
     formData.append("attach-upload-file", file);
+
     fetch("https://dev-upload.attach.live/files/upload/attach-chat-starter", {
       credentials: "include",
       method: "POST",
@@ -40,35 +35,31 @@ var UploadFile = function(options) {
     })
       .then(response => response.json())
       .then(body => {
-        uploading = false;
-        if (body.error) {
-          error = body.error;
-        } else {
-          error = "";
-          imageUrl = body.url;
+        if (body.url) {
           options.onChange(body.url);
         }
-        render();
+        render(body.url, false, body.error || "");
       })
       .catch(() => {
-        uploading = false;
-        error = "Something went wrong";
-        render();
+        render(null, false, "Something went wrong");
       });
   }
 
   inputFile.addEventListener("change", function(event) {
     upload(event.target.files[0]);
   });
+
   uploadFileButton.addEventListener("dragover", function(e) {
     e.preventDefault();
   });
+
   uploadFileButton.addEventListener("drop", function(e) {
     e.preventDefault();
     upload(e.dataTransfer.files[0]);
   });
+
   uploadFileButton.addEventListener("click", function() {
-    if (!uploading) {
+    if (!isUploading) {
       inputFile.click();
     }
   });
