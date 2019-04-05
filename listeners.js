@@ -4,11 +4,7 @@ var inputHashtag = document.querySelector("#hashtag");
 
 function initEmail() {
   const hashtag = cleanHashtag(window.location.hash.substring(1));
-  window.location.href =
-    "mailto:subject=Join me for WebRTC video on #" +
-    hashtag +
-    "&body=" +
-    getUrl();
+  window.location.href = "mailto:subject=Join me for WebRTC video on #" + hashtag + "&body=" + getUrl();
 }
 
 function onCopy() {
@@ -24,7 +20,8 @@ function onHashtagChange() {
   inputHashtag.value = hashtag;
   window.localStorage.setRoom("identifier", hashtag);
 
-  // update room identifier to reflect new hashtag
+  // Update the room identifier to reflect the new hashtag
+  // Provider and type are already set and do not need to be set again.
   attachSdk.setProperty("attach:room:identifier", hashtag);
 }
 
@@ -51,7 +48,7 @@ function onSubmit(e) {
   window.location.hash = "#" + inputValue;
   window.localStorage.setRoom("identifier", inputValue);
 
-  // update room identifier to reflect new hashtag
+  // Update the room identifier to reflect the new hashtag
   attachSdk.setProperty("attach:room:identifier", inputValue);
 }
 
@@ -59,9 +56,9 @@ function openTab() {
   window.open(getUrl(), "_blank");
 }
 
+// Update the user avatar
+// Updating the avatar starts a new session. This is typically done when your user signs in or out of your website.
 function updateAvatar(imageUrl) {
   window.localStorage.setRoom("avatar", imageUrl);
-
-  // set user avatar
   attachSdk.setProperty("attach:user:avatar", imageUrl);
 }

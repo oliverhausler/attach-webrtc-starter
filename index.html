@@ -6,62 +6,44 @@
     <title>WebRTC Starter – ATTACH</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      href="https://dev-assets.attach.live/icon2/webrtc-starter/favicon.ico"
-      sizes="32x32"
-      type="image/x-icon"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:400"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
-    />
+    <link rel="icon" href="https://dev-assets.attach.live/icon2/webrtc-starter/favicon.ico"
+      sizes="32x32" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="utils.js" defer></script>
     <script src="uploadFile.js" defer></script>
     <script src="listeners.js" defer></script>
 
     <!-- Set up ATTACH for your website: https://documentation.attach.live/properties -->
+    <!-- Use meta tags to define static properties. -->
     <script src="https://dev-video.attach.live/v1" defer></script>
 
-    <!-- Define static SDK properties in meta -->
-    <meta
-      property="attach:api-key"
-      content="dev_web_ixanujIFpkdsWwqD3rTBSXU1RpCCiAww"
-    />
-    <meta
-      property="attach:videocall:button-background-color"
-      content="#04670A"
-    />
+    <!-- The API key is only valid in the original repo. To prevent video and chat from timing out early,
+    get your own free API key at https://platform.attach.live -->
+    <meta property="attach:api-key" content="dev_web_ixanujIFpkdsWwqD3rTBSXU1RpCCiAww" />
 
-    <!-- Start code for dynamically modifying SDK properties last -->
+    <!-- In this starter, only the button is styled. All other elements use default colors. But you can style them
+    using 'local-background-color' and 'remote-background-color' meta tags, or even assign a 'local-preview' image.
+    See https://github.com/attach-live/attach-sdk-properties/web for all supported properties. -->
+    <meta property="attach:videocall:button-background-color" content="#04670A" />
+
+    <!-- Dynamically modify SDK properties. -->
     <script src="index.js" defer></script>
   </head>
   <body>
-    <a
-      href="https://github.com/attach-live/attach-webrtc-starter"
-      target="_blank"
-      class="ribbon"
-      ><img
+    <a class="ribbon" href="https://github.com/attach-live/attach-webrtc-starter" target="_blank">
+      <img
         width="149"
         height="149"
         src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149"
         class="attachment-full size-full"
         alt="Fork me on GitHub"
         data-recalc-dims="1"
-    /></a>
+      /></a>
     <div class="container">
-      <div class="page__title title">
-        People with the same hashtag will meet in the same room.
-      </div>
+      <div class="page__title title">People with the same hashtag will meet in the same room.</div>
       <section class="customize">
         <ul class="step__list">
           <li class="step step--one">
@@ -70,10 +52,8 @@
               <label class="title">Enter a hashtag</label>
               <form class="action__wrapper form" id="form">
                 <p class="hashtag">#</p>
-                <input type="text" class="input" id="hashtag" maxlength="100" />
-                <button id="submit" class="submit disabled" type="submit">
-                  OK
-                </button>
+                <input type="text" class="input" id="hashtag" maxlength="40" />
+                <button id="submit" class="submit disabled" type="submit">OK</button>
               </form>
             </div>
           </li>
@@ -85,9 +65,7 @@
               <div class="action__wrapper">
                 <div class="upload" id="upload-file">
                   <span>upload</span>
-                  <i class="material-icons refresh">
-                    refresh
-                  </i>
+                  <i class="material-icons refresh">refresh</i>
                 </div>
                 <div class="error" id="error-upload"></div>
               </div>
@@ -99,20 +77,14 @@
               <label class="title">Share or try</label>
               <div class="action__wrapper">
                 <button id="copy">
-                  <i class="material-icons icon--copy">
-                    content_copy
-                  </i>
+                  <i class="material-icons icon--copy">content_copy</i>
                   <div id="tooltip" class="tooltip hidden">Copied</div>
                 </button>
                 <button id="email">
-                  <i class="material-icons email">
-                    email
-                  </i>
+                  <i class="material-icons email">email</i>
                 </button>
                 <button id="open-browser">
-                  <i class="material-icons email">
-                    open_in_new
-                  </i>
+                  <i class="material-icons email">open_in_new</i>
                 </button>
               </div>
             </div>
@@ -120,12 +92,12 @@
         </ul>
       </section>
 
-      <!-- Place the ATTACH embed on your website -->
+      <!-- Place the ATTACH embed on your page. The 'attach-videocall' class tells the SDK where to render video.
+      Use the same class name in your own CSS to configure the embed further. -->
       <main class="attach-videocall"></main>
     </div>
     <p class="disclaimer">
-      Made with love by
-      <a target="_blank" href="https://www.attach.live">ATTACH</a>
+      Made with love by <a target="_blank" href="https://www.attach.live">ATTACH</a>
     </p>
   </body>
 </html>

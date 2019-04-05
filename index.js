@@ -7,7 +7,7 @@ var hashtagForm = document.querySelector("#form");
 var hashtag = window.localStorage.getRoom("identifier") || "helloattach";
 var avatar = window.localStorage.getRoom("avatar") || "";
 
-// add listeneres
+// Add listeneres
 window.addEventListener("hashchange", onHashtagChange, false);
 inputHashtag.addEventListener("input", onHashtagInput);
 hashtagForm.addEventListener("submit", onSubmit);
@@ -15,13 +15,13 @@ copyButton.addEventListener("click", onCopy);
 emailButton.addEventListener("click", initEmail);
 openBrowserButton.addEventListener("click", openTab);
 
-// update avatar when uploading new image
+// Upload a new avatar
 new UploadFile({
   onChange: updateAvatar,
   initialValue: avatar
 });
 
-// set hashtag
+// Set a hashtag
 if (window.location.hash) {
   hashtag = window.location.hash.substring(1) || hashtag;
 } else {
@@ -30,14 +30,15 @@ if (window.location.hash) {
 
 inputHashtag.value = hashtag;
 
-// enter room
+// Enter a room
+// Pass an object to set multiple properties at once.
 attachSdk.setProperty("attach:room", {
   provider: "twitter",
   type: "hashtag",
   identifier: hashtag
 });
 
-// set avatar if present
+// Set the avatar URL if present
 if (avatar) {
   attachSdk.setProperty("attach:user:avatar", avatar);
 }
