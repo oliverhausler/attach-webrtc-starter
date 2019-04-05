@@ -6,13 +6,12 @@ function cleanHashtag(value) {
   return decodeURIComponent(value).replace(new RegExp(" ", "g"), "");
 }
 
-//https://stackoverflow.com/a/33928558
+// https://stackoverflow.com/a/33928558
 function copyToClipboard(text) {
   if (window.clipboardData && window.clipboardData.setData) {
     return clipboardData.setData("Text", text);
   } else if (
-    document.queryCommandSupported &&
-    document.queryCommandSupported("copy")
+    document.queryCommandSupported && document.queryCommandSupported("copy")
   ) {
     var textarea = document.createElement("textarea");
     textarea.textContent = text;

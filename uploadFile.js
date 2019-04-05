@@ -41,7 +41,7 @@ var UploadFile = function(options) {
         render(body.url, false, body.error || "");
       })
       .catch(() => {
-        render(null, false, "Something went wrong");
+        render(null, false, "Something went wrong.");
       });
   }
 
@@ -59,8 +59,6 @@ var UploadFile = function(options) {
   });
 
   uploadFileButton.addEventListener("click", function() {
-    if (!isUploading) {
-      inputFile.click();
-    }
+    if (!isUploading) inputFile.click();
   });
 };

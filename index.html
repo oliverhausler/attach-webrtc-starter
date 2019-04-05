@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>WebRTC Starter – ATTACH</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WebRTC Starter – ATTACH</title>
     <link
       rel="icon"
       href="https://dev-assets.attach.live/icon2/webrtc-starter/favicon.ico"
@@ -31,12 +31,17 @@
 
     <!-- Set up ATTACH for your website: https://documentation.attach.live/properties -->
     <script src="https://dev-video.attach.live/v1" defer></script>
+
     <!-- Define static SDK properties in meta -->
     <meta
       property="attach:api-key"
       content="dev_web_ixanujIFpkdsWwqD3rTBSXU1RpCCiAww"
     />
-    <meta property="attach:videocall:identity-color" content="#04670A" />
+    <meta
+      property="attach:videocall:identity-color"
+      content="#04670A"
+    />
+
     <!-- Start code for dynamically modifying SDK properties last -->
     <script src="index.js" defer></script>
   </head>
@@ -116,7 +121,7 @@
       </section>
 
       <!-- Place the ATTACH embed on your website -->
-      <main class="videocall attach-videocall"></main>
+      <main class="attach-videocall"></main>
     </div>
     <p class="disclaimer">
       Made with love by

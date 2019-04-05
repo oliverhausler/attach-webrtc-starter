@@ -16,14 +16,15 @@ function onCopy() {
   tooltip.classList.remove("hidden");
   setTimeout(function() {
     tooltip.classList.add("hidden");
-  }, 500);
+  }, 1500);
 }
 
-function onHashChange() {
+function onHashtagChange() {
   const hashtag = cleanHashtag(window.location.hash.substring(1));
   inputHashtag.value = hashtag;
-  window.localStorage.setItem("identifier", hashtag);
-  // update attach room identifier when hashtag is changed
+  window.localStorage.setRoom("identifier", hashtag);
+
+  // update room identifier to reflect new hashtag
   attachSdk.setProperty("attach:room:identifier", hashtag);
 }
 
@@ -48,8 +49,9 @@ function onSubmit(e) {
 
   inputHashtag.value = inputValue;
   window.location.hash = "#" + inputValue;
-  window.localStorage.setItem("identifier", inputValue);
-  // update attach room identifier when hashtag input is changed
+  window.localStorage.setRoom("identifier", inputValue);
+
+  // update room identifier to reflect new hashtag
   attachSdk.setProperty("attach:room:identifier", inputValue);
 }
 
@@ -57,8 +59,9 @@ function openTab() {
   window.open(getUrl(), "_blank");
 }
 
-function updateAttachAvatar(imageUrl) {
-  //setting avatar to attach user
+function updateAvatar(imageUrl) {
+  window.localStorage.setRoom("avatar", imageUrl);
+
+  // set user avatar
   attachSdk.setProperty("attach:user:avatar", imageUrl);
-  window.localStorage.setItem("avatar", imageUrl);
 }

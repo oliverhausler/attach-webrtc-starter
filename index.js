@@ -4,41 +4,40 @@ var emailButton = document.querySelector("#email");
 var openBrowserButton = document.querySelector("#open-browser");
 var hashtagForm = document.querySelector("#form");
 
-var hashtag = window.localStorage.getItem("identifier") || "helloattach";
-var avatar = window.localStorage.getItem("avatar") || "";
+var hashtag = window.localStorage.getRoom("identifier") || "helloattach";
+var avatar = window.localStorage.getRoom("avatar") || "";
 
-//add listeneres
-window.addEventListener("hashchange", onHashChange, false);
+// add listeneres
+window.addEventListener("hashchange", onHashtagChange, false);
 inputHashtag.addEventListener("input", onHashtagInput);
 hashtagForm.addEventListener("submit", onSubmit);
 copyButton.addEventListener("click", onCopy);
 emailButton.addEventListener("click", initEmail);
 openBrowserButton.addEventListener("click", openTab);
 
-//update attach avatar when uploaded new image
+// update avatar when uploading new image
 new UploadFile({
-  onChange: updateAttachAvatar,
+  onChange: updateAvatar,
   initialValue: avatar
 });
 
-//init
+// set hashtag
 if (window.location.hash) {
   hashtag = window.location.hash.substring(1) || hashtag;
 } else {
   window.location.hash = "#" + hashtag;
 }
 
-// initialize hastag input
 inputHashtag.value = hashtag;
 
-//initialize attach room
+// enter room
 attachSdk.setProperty("attach:room", {
   provider: "twitter",
   type: "hashtag",
   identifier: hashtag
 });
 
+// set avatar if present
 if (avatar) {
-  // if avatar present, set to attach user
   attachSdk.setProperty("attach:user:avatar", avatar);
 }
