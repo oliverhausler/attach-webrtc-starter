@@ -13,9 +13,9 @@ function initEmail() {
 
 function onCopy() {
   copyToClipboard(getUrl());
-  tooltip.classList.remove("hidden");
+  removeClass(tooltip, "hidden");
   setTimeout(function() {
-    tooltip.classList.add("hidden");
+    addClass(tooltip, "hidden");
   }, 1500);
 }
 
@@ -31,7 +31,7 @@ function onHashtagChange(e) {
     window.location.hash = "#" + hashtag;
   }
 
-  window.localStorage.setItem("identifier", hashtag);
+  storage.setRoom(hashtag);
   // Update the room identifier to reflect the new hashtag
   // Provider and type are already set and do not need to be set again.
   attachSdk.setProperty("attach:room:identifier", hashtag);
@@ -39,9 +39,9 @@ function onHashtagChange(e) {
 
 function onHashtagInput(e) {
   if (!e.target.value) {
-    submitButton.classList.add("disabled");
+    addClass(submitButton, "disabled");
   } else {
-    submitButton.classList.remove("disabled");
+    removeClass(submitButton, "disabled");
   }
 }
 
@@ -52,6 +52,6 @@ function openTab() {
 // Update the user avatar
 // Updating the avatar starts a new session. This is typically done when your user signs in or out of your website.
 function updateAvatar(imageUrl) {
-  window.localStorage.setItem("avatar", imageUrl);
+  storage.setAvatar(imageUrl);
   attachSdk.setProperty("attach:user:avatar", imageUrl);
 }

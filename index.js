@@ -4,8 +4,8 @@ var emailButton = document.querySelector("#email");
 var openBrowserButton = document.querySelector("#open-browser");
 var hashtagForm = document.querySelector("#form");
 
-var hashtag = window.localStorage.getItem("identifier") || "helloattach";
-var avatar = window.localStorage.getItem("avatar") || "";
+var hashtag = storage.getRoom() || "helloattach";
+var avatar = storage.getAvatar() || "";
 
 // Add listeneres
 window.addEventListener("hashchange", onHashtagChange, false);
@@ -22,13 +22,7 @@ new UploadFile({
 });
 
 // Set a hashtag
-if (window.location.hash) {
-  hashtag = window.location.hash.substring(1) || hashtag;
-} else {
-  window.location.hash = "#" + hashtag;
-}
-
-inputHashtag.value = hashtag;
+setHashTag(inputHashtag);
 
 // Enter a room
 // Pass an object to set multiple properties at once.
