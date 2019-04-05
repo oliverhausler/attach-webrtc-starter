@@ -4,13 +4,13 @@ var emailButton = document.querySelector("#email");
 var openBrowserButton = document.querySelector("#open-browser");
 var hashtagForm = document.querySelector("#form");
 
-var hashtag = window.localStorage.getRoom("identifier") || "helloattach";
-var avatar = window.localStorage.getRoom("avatar") || "";
+var hashtag = window.localStorage.getItem("identifier") || "helloattach";
+var avatar = window.localStorage.getItem("avatar") || "";
 
 // Add listeneres
 window.addEventListener("hashchange", onHashtagChange, false);
 inputHashtag.addEventListener("input", onHashtagInput);
-hashtagForm.addEventListener("submit", onSubmit);
+hashtagForm.addEventListener("submit", onHashtagChange);
 copyButton.addEventListener("click", onCopy);
 emailButton.addEventListener("click", initEmail);
 openBrowserButton.addEventListener("click", openTab);
