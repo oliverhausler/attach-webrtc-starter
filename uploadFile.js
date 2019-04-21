@@ -28,7 +28,7 @@ var UploadFile = function(options) {
 		var formData = new FormData()
 		formData.append('attach-upload-file', file)
 
-		fetch('https://dev-upload.attach.live/files/upload/attach-chat-starter', {
+		fetch('https://upload.attach.live/files/upload/attach-chat-starter', {
 			credentials: 'include',
 			method: 'POST',
 			body: formData,
