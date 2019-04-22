@@ -5,7 +5,7 @@ var inputHashtag = document.querySelector('#hashtag')
 function initEmail() {
 	const hashtag = cleanHashtag(window.location.hash.substring(1))
 	window.location.href =
-		'mailto:subject=Join me for WebRTC video on #' + hashtag + '&body=' + getUrl()
+		'mailto:?subject=Join me for WebRTC video on #' + hashtag + '&body=' + getUrl()
 }
 
 function onCopy() {
