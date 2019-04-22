@@ -19,16 +19,16 @@ const storage = {
 		window.localStorage.setItem(name, item)
 	},
 	get: function(name) {
-		window.localStorage.getItem(name)
+		return window.localStorage.getItem(name)
 	},
 	getRoom: function() {
-		this.get('identifier')
+		return this.get('identifier')
 	},
 	setRoom: function(identifier) {
 		this.set('identifier', identifier)
 	},
 	getAvatar: function() {
-		this.get('avatar')
+		return this.get('avatar')
 	},
 	setAvatar: function(imageUrl) {
 		this.set('avatar', imageUrl)
